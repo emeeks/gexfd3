@@ -42,7 +42,7 @@ gexfD3 =
         newNode.size = gNode.viz.size;
         nodeHash[gNode.id] = newNode;
         for (y in gNode.attributes) {
-          if (!isNaN(gNode.attributes[y]) && !(typeof(gNode.attributes[y]) === "undefined")) {
+          if (!(typeof(gNode.attributes[y]) === "undefined") && !(gNode.attributes[y].toString() == "NaN" )) {
             newNode.properties[y] = gNode.attributes[y];
           }
         }
@@ -67,7 +67,8 @@ gexfD3 =
         links.push(newLink)
         x++;
       }
-      
+      linkAttributes = d3.keys(links[0].properties);
+
         sizeExtent = d3.extent(nodes, function(d) {return parseFloat(d.size)})
         sizeScale = d3.scale.linear().domain(sizeExtent).range(nodeScale);
         return this;
