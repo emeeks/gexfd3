@@ -42,7 +42,7 @@ gexfD3 =
         newNode.size = gNode.viz.size;
         nodeHash[gNode.id] = newNode;
         for (y in gNode.attributes) {
-          if (!Number.isNaN(gNode.attributes[y]) && !(typeof(gNode.attributes[y]) === "undefined")) {
+          if (!isNaN(gNode.attributes[y]) && !(typeof(gNode.attributes[y]) === "undefined")) {
             newNode.properties[y] = gNode.attributes[y];
           }
         }
