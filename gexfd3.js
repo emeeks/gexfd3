@@ -105,9 +105,8 @@ gexfD3 =
 
 
 
-this.overwriteLinks = function(incLinks) {
+this.overwriteLinks = function(data) {
       if (!arguments.length) return nodes;
-      data = incLinks;
       //OVERWRITE links for parallel links
       links = [];
         for (x in data) {
@@ -121,7 +120,7 @@ this.overwriteLinks = function(incLinks) {
         if (newLink.source && newLink.target) {
           links.push(newLink);
         }
-        x++;          
+        x++;
         }
         linkAttributes = d3.keys(links[0].properties);
       
@@ -164,7 +163,7 @@ this.overwriteLinks = function(incLinks) {
     gexfD3Brush
     .x(dynamicScale)
     .extent(dynamicExtent)
-    var brushAxis = d3.svg.axis().scale(dynamicScale).orient("bottom").tickSize(-40).ticks(20);
+    var brushAxis = d3.svg.axis().scale(dynamicScale).orient("bottom").tickSize(-40).ticks(20).tickFormat(d3.format("d"));
 
       incSelection.append("g").attr("id", "bgAxis").append("g").attr("transform", "translate(50,35)").call(brushAxis)
       incSelection.append("g").attr("id", "fgBrush").attr("transform", "translate(50,0)")
